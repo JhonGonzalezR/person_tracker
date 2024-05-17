@@ -13,7 +13,7 @@ class DetectPerson(Node):
         super().__init__('detect_person')
 
         self.get_logger().info('Looking person...')
-        self.image_sub = self.create_subscription(Image,"video_frames",self.callback,10)
+        self.image_sub = self.create_subscription(Image,"/camera/color/image_raw",self.callback,10)
         self.image_out_pub = self.create_publisher(Image, "/image_out", 1)
         self.ball_pub  = self.create_publisher(Point,"/detected_person",1)
 
