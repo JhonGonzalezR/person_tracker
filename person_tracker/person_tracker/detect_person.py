@@ -61,7 +61,7 @@ class DetectPerson(Node):
             
 
         # YOLOOO
-        results = self.model.predict(source=cv_image, stream=True, show=True, classes=[0], verbose = False)
+        results = self.model.predict(source=cv_image, stream=True, show=False, classes=[0], verbose = False)
         for r in results:       
     
             boxes=r.boxes
@@ -82,9 +82,9 @@ class DetectPerson(Node):
         
                 #cv2.rectangle(mascara,(int(np_boxes[0][0]),int(np_boxes[0][1])),(int(np_boxes[0][2]),int(np_boxes[0][3])), (255,255,255), 3)
                 resultante = cv2.ellipse(mascara,(x_centro,y_centro),(largo,ancho),90,0,360,(255,255,255),-1)
-                cv2.imshow("negro",resultante)
+                #cv2.imshow("negro",resultante)
                 keypoints_norm, out_image = self.blob_detector(resultante)
-                cv2.imshow("out",out_image)
+                #cv2.imshow("out",out_image)
 
                 img_to_pub = self.bridge.cv2_to_imgmsg(out_image)
                 img_to_pub.header = data.header
@@ -111,7 +111,8 @@ class DetectPerson(Node):
 
 
             except:
-                cv2.imshow("negro",mascara)
+                #cv2.imshow("negro",mascara)
+                pass
         
 
 
