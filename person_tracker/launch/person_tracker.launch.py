@@ -12,7 +12,7 @@ def generate_launch_description():
 
     )
     follow = Node(
-        package="person tracker",
+        package="person_tracker",
         executable="follow_person",
         
     )
