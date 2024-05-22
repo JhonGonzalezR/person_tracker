@@ -13,7 +13,7 @@ class DetectPerson(Node):
         super().__init__('detect_person')
 
         self.get_logger().info('Looking person...')
-        self.image_sub = self.create_subscription(Image,"/camera/color/image_raw",self.callback,10)
+        self.image_sub = self.create_subscription(Image,"/camera/image_raw/uncompressed",self.callback,10)
         self.image_out_pub = self.create_publisher(Image, "/image_out", 1)
         self.ball_pub  = self.create_publisher(Point,"/detected_person",1)
 
@@ -50,7 +50,7 @@ class DetectPerson(Node):
         print("hola1")
         self.bridge = CvBridge()
         self.model = YOLO("yolov8n-seg.pt")
-
+        print("hola 2")
         # if(self.tuning_mode):
         #     proc.create_tuning_window(self.tuning_params)
 
@@ -84,7 +84,7 @@ class DetectPerson(Node):
                 resultante = cv2.ellipse(mascara,(x_centro,y_centro),(largo,ancho),90,0,360,(255,255,255),-1)
                 #cv2.imshow("negro",resultante)
                 keypoints_norm, out_image = self.blob_detector(resultante)
-                #cv2.imshow("out",out_image)
+                cv2.imshow("out",out_image)
 
                 img_to_pub = self.bridge.cv2_to_imgmsg(out_image)
                 img_to_pub.header = data.header
@@ -111,8 +111,8 @@ class DetectPerson(Node):
 
 
             except:
-                #cv2.imshow("negro",mascara)
-                pass
+                cv2.imshow("negro",mascara)
+                print("hola")
         
 
 

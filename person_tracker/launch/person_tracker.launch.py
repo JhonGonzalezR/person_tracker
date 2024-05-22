@@ -9,7 +9,7 @@ def generate_launch_description():
         executable="detect_person",
         
         
-
+    
     )
     follow = Node(
         package="person_tracker",
@@ -17,8 +17,20 @@ def generate_launch_description():
         
     )
 
+    compressed = Node(
+            package='image_transport',
+            executable='republish',
+            name='image_republisher',
+            arguments=['compressed', 'raw'],
+            remappings=[
+                ('in/compressed', '/camera/color/image_raw/compressed'),
+                ('out', '/camera/image_raw/uncompressed')
+            ]
+        )
+
 
   
 
     return LaunchDescription([tracker,
-                              follow])  
+                              follow,
+                              compressed])  

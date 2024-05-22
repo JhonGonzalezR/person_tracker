@@ -33,7 +33,7 @@ class FollowPerson(Node):
         self.declare_parameter("rcv_timeout_secs", 1.0)
         self.declare_parameter("angular_chase_multiplier", 0.7)
         self.declare_parameter("forward_chase_speed", 0.2)          # VELCIDAD HACIA ADELNATE, ORIGINAL EN 0.1
-        self.declare_parameter("search_angular_speed", 0.8)
+        self.declare_parameter("search_angular_speed", 1.0)
         self.declare_parameter("max_size_thresh", 0.5)              # cambiar para ver si ahora si camina origin 0.1
         self.declare_parameter("filter_value", 0.9)
 
