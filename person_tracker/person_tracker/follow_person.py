@@ -26,7 +26,7 @@ class FollowPerson(Node):
         self.declare_parameter("detected_person_topic", "/person_tracker/detected_person")
         self.declare_parameter("cmd_vel_topic", "/person_tracker/cmd_vel")
         self.declare_parameter("enable_motion", False)
-        self.declare_parameter("target_timeout_secs", 0.5)
+        self.declare_parameter("target_timeout_secs", 2.0)
         self.declare_parameter("angular_gain", 0.5)
         self.declare_parameter("forward_speed", 0.12)
         self.declare_parameter("max_linear_velocity", 0.15)
