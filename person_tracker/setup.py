@@ -23,7 +23,8 @@ setup(
     entry_points={
         'console_scripts': [
         "detect_person = person_tracker.detect_person:main",
-        "follow_person = person_tracker.follow_person:main"
+        "follow_person = person_tracker.follow_person:main",
+        "spot_robot_manager = person_tracker.spot_robot_manager:main",
         ],
     },
 )
